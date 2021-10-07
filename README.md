@@ -1,3 +1,3 @@
-‍‍`````1bash 
+‍‍`````bash 
 Hello from Earth
 `````
