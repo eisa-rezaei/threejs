@@ -18,7 +18,7 @@ const canvas = document.querySelector("canvas.webgl");
 const scene = new THREE.Scene();
 
 // Objects shape
-const geometry = new THREE.BoxGeometry(0.5, 1, 1, 1);
+const geometry1 = new THREE.BoxGeometry(1, 1);
 
 const geometry2 = new THREE.SphereBufferGeometry(0.5, 20, 50, 100);
 
@@ -37,7 +37,7 @@ material2.color = new THREE.Color(0xe0e0e0);
 const sphere = new THREE.Mesh(geometry2, material);
 scene.add(sphere);
 
-// const sphere2 = new THREE.Mesh(geometry2, material2);
+const sphere2 = new THREE.Mesh(geometry1, material2);
 // scene.add(sphere2);
 
 // Lights
@@ -113,7 +113,8 @@ const tick = () => {
 
   // Update objects
   sphere.rotation.y = 0.5 * elapsedTime;
-  //   sphere2.rotation.x = 0.5 * elapsedTime;
+  sphere2.rotation.y = 0.5 * elapsedTime;
+  sphere2.rotation.x = 0.5 * elapsedTime;
 
   // Update Orbital Controls
   // controls.update()
