@@ -79,7 +79,7 @@ const camera = new THREE.PerspectiveCamera(
   100
 );
 camera.position.set(0, 0, 2);
-pointLight.intensity = 0.3;
+pointLight.intensity = 0.4;
 scene.add(camera);
 
 gui.add(pointLight.position, `y`).min(-5).max(5).step(0.01);
@@ -105,16 +105,44 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
  * Animate
  */
 
+document.addEventListener("mousemove", mouseMoveHandler);
+window.addEventListener("scroll", scrollHandler);
+
+let mouseX = 0;
+let mouseY = 0;
+
+let targetX = 0;
+let targetY = 0;
+
+const windowX = window.innerWidth / 2;
+const windowY = window.innerHeight / 2;
+
+function mouseMoveHandler(e) {
+  mouseX = e.clientX - windowX;
+  mouseY = e.clientY - windowY;
+}
+function scrollHandler() {
+  sphere.rotation.x = window.scrollY * 0.005;
+  console.log(window.scrollY);
+}
+
 const clock = new THREE.Clock();
 console.log(clock);
 
 const tick = () => {
   const elapsedTime = clock.getElapsedTime();
 
+  targetX = mouseX * 0.005;
+  targetY = mouseY * 0.005;
+
   // Update objects
   sphere.rotation.y = 0.5 * elapsedTime;
-  sphere2.rotation.y = 0.5 * elapsedTime;
-  sphere2.rotation.x = 0.5 * elapsedTime;
+  sphere.rotation.y += 0.6 * (targetX - sphere.rotation.x);
+
+  sphere.position.z = 0.25 * (targetY - sphere.rotation.x);
+
+  // sphere2.rotation.y = 0. 5 * elapsedTime;
+  // sphere2.rotation.x = 0.5 * elapsedTime;
 
   // Update Orbital Controls
   // controls.update()
