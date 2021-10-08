@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 html,
@@ -21,13 +22,24 @@ body {
 .eisa {
   width: 100vw;
   max-height: 100vh;
-  padding-top: 600px;
+  padding-top: 620px;
   margin: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #fff;
   font-size: 2rem;
+}
+section {
+  width: 100vw;
+  height: auto;
+  padding: 50px;
+  padding-bottom: 100px;
+  color: #fff;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 
